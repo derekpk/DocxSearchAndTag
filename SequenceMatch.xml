@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:sequences xmlns:p="http://www.decoder.ie/namespaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.decoder.ie/namespaces SequenceMatch.xsd ">
+
+<!-- ***************************************************  AUTHOR  ***************************************************** -->
+	<p:sequence p:type="AUTHOR" p:id="AUT_4" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_TAG" p:action="SKIP" />
+			<p:bit p:type="BOLD" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value="Hello" />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="OPEN_BRACKET" />
+				<p:multi p:type="CLOSE_BRACKET" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="AUTHOR" p:id="AUT_8" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_TAG" p:action="STEP" />
+			<p:bit p:type="BOLD" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG" p:action="STEP" />
+		</p:piece>
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="STEP" />
+		</p:piece>
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="STEP" />
+		</p:piece>
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="FULL_STOP" />
+			</p:bit>
+		</p:piece>
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_TAG" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG_SLASH" p:action="STEP" />
+			<p:bit p:type="BOLD" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG" p:action="STEP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="AUTHOR" p:id="AUT_9" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_TAG" p:action="STEP" />
+			<p:bit p:type="BOLD" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG" p:action="STEP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="STEP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="COMMA" p:action="SKIP" />
+			<p:bit p:type="OPEN_TAG" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG_SLASH" p:action="STEP" />
+			<p:bit p:type="BOLD" p:action="STEP" />
+			<p:bit p:type="CLOSE_TAG" p:action="STEP" />
+		</p:piece>
+	</p:sequence>
+	
+	<p:sequence p:type="AUTHOR" p:id="AUT_FIRST_AND_SIR_NAME_FULL_STOP" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="SKIP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="COMMA" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+	
+	<p:sequence p:type="AUTHOR" p:id="AUT_1" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="SKIP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="STEP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="FULL_STOP" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="AUTHOR" p:id="AUT_VON_DOCTOR" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value="von " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="LAST_CHAR" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="FULL_STOP" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="AUTHOR" p:id="AUT_3" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="SKIP" />
+			<p:bit p:type="FULL_STOP" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="AUTHOR" p:id="EXAMPLE_AUTHOR_1"	p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" by " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>		</p:piece>
+	</p:sequence>
+<!-- ***************************************************  TITLE  ***************************************************** -->
+
+	<p:sequence p:type="TITLE" p:id="TITLE_EXACT_DES" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=", " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" des " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="CAP_ALPHA" />
+				<p:multi p:type="LOW_ALPHA" />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+	
+	<p:sequence p:type="TITLE" p:id="TITLE_EXACT_DEN" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=", " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" den " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="CAP_ALPHA" />
+				<p:multi p:type="LOW_ALPHA" />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="TITLE" p:id="TITLE_EXACT_DAS" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=", " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" das " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="CAP_ALPHA" />
+				<p:multi p:type="LOW_ALPHA" />
+			</p:bit>
+			<p:bit p:type="FULL_STOP" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="TITLE" p:id="TITLE_EXACT_DAS_FROM_CAP_ALPHA" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" das " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="CAP_ALPHA" />
+				<p:multi p:type="LOW_ALPHA" />
+			</p:bit>
+			<p:bit p:type="COMMA" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="TITLE" p:id="TITLE_EXACT_DEN" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=", " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="FULL_STOP" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="TITLE" p:id="TITLE_3" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=", " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" XXX " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="CAP_ALPHA" />
+				<p:multi p:type="LOW_ALPHA" />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+
+<!-- ***************************************************  REFERENCE  ***************************************************** -->
+	
+
+	<p:sequence p:type="REFERENCE" p:id="REF_0" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="REFERENCE" p:id="REF_2" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
+			<p:bit p:type="NUMERIC" p:action="SKIP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="PARAGRAPH" p:id="ABS_CAP_ALPHA_LOW_ALPHA_SPACE_START" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="LAST_CHAR" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+<!-- ***************************************************  PARAGRAPH  ***************************************************** -->
+
+	<p:sequence p:type="PARAGRAPH" p:id="ABS_NON_STANDARD_SENTENCE_START" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="MULTI" p:action="STEP">
+				<p:multi p:type="NUMERIC" />
+				<p:multi p:type="LOW_ALPHA" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="OPEN_QUOTE" />
+			</p:bit>
+			<p:bit p:type="LAST_CHAR" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="PARAGRAPH" p:id="ABS_1" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_QUOTE" p:action="STEP" />
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="LAST_CHAR" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:type="PARAGRAPH" p:id="ABS_FOR_CONOR" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value="ie " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="SPACE" p:action="SKIP" />
+			<p:bit p:type="LAST_CHAR" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+</p:sequences>

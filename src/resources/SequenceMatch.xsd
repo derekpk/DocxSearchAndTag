@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dk:schema xmlns:dk="http://www.w3.org/2001/XMLSchema" xmlns="http://www.decoder.ie/namespaces"
+	targetNamespace="http://www.decoder.ie/namespaces" xmlns:tns="http://www.example.org/SequenceMatch"
+	elementFormDefault="qualified" attributeFormDefault="qualified">
+	<dk:element name="sequences">
+		<dk:complexType>
+			<dk:sequence>
+				<dk:element name="sequence" minOccurs="1" maxOccurs="unbounded">
+					<dk:complexType>
+						<dk:sequence>
+							<dk:element name="piece" minOccurs="1" maxOccurs="unbounded">
+								<dk:complexType>
+									<dk:sequence>
+										<dk:element name="bit" maxOccurs="unbounded">
+											<dk:complexType>
+												<dk:sequence>
+													<dk:element name="multi" minOccurs="0"
+														maxOccurs="unbounded">
+														<dk:complexType>
+															<dk:attributeGroup ref="multiAttributes" />
+														</dk:complexType>
+													</dk:element>
+													<dk:element name="exact" minOccurs="0"
+														maxOccurs="1">
+														<dk:complexType>
+															<dk:attributeGroup ref="exactAttributes" />
+														</dk:complexType>
+													</dk:element>
+												</dk:sequence>
+												<dk:attributeGroup ref="bitAttributes" />
+											</dk:complexType>
+										</dk:element>
+									</dk:sequence>
+									<dk:attributeGroup ref="pieceAttributes" />
+								</dk:complexType>
+							</dk:element>
+						</dk:sequence>
+						<dk:attributeGroup ref="sequenceAttributes" />
+					</dk:complexType>
+				</dk:element>
+
+			</dk:sequence>
+		</dk:complexType>
+	</dk:element>
+
+	<dk:attributeGroup name="sequenceAttributes">
+		<!-- <dk:attribute name="type" type="SequenceType" use="required" /> -->
+		<dk:attribute name="type" use="optional" default="FOUND">
+	        <dk:simpleType>
+	            <dk:restriction base="dk:string">
+	                <dk:pattern value="([A-Z])*"/>
+	            </dk:restriction>
+	        </dk:simpleType>
+	    </dk:attribute>
+		<dk:attribute name="id" type="dk:string" use="required" />
+		<dk:attribute name="action" type="SequenceActionType" use="required" />
+	</dk:attributeGroup>
+
+ 	<dk:simpleType name="SequenceActionType">
+		<dk:restriction base="dk:string">
+			<dk:enumeration value="START" />
+			<dk:enumeration value="CONTINUOUS" />
+		</dk:restriction>
+	</dk:simpleType>
+	
+	<dk:attributeGroup name="pieceAttributes">
+		<dk:attribute name="recurrence" type="RecurrenceType"
+			default="SINGLE" />
+	</dk:attributeGroup>
+
+	<dk:attributeGroup name="multiAttributes">
+		<dk:attribute name="type" type="BitType" use="required" />
+	</dk:attributeGroup>
+
+	<dk:attributeGroup name="exactAttributes">
+		<dk:attribute name="value" type="dk:string" use="required" />
+	</dk:attributeGroup>
+
+	<dk:attributeGroup name="bitAttributes">
+		<dk:attribute name="type" type="BitType" use="required" />
+		<dk:attribute name="action" type="ActionType" use="required" />
+	</dk:attributeGroup>
+
+
+	<!-- Restrict values using MIN and MAX -->
+	<dk:simpleType name="OneToOneHurdred">
+		<dk:restriction base="dk:integer">
+			<dk:minInclusive value="1" />
+			<dk:maxInclusive value="100" />
+		</dk:restriction>
+	</dk:simpleType>
+
+	<!-- Restrict values using ENUM -->
+	<dk:simpleType name="RecurrenceType">
+		<dk:restriction base="dk:string">
+			<dk:enumeration value="SINGLE" />
+			<dk:enumeration value="MULTIPLE" />
+		</dk:restriction>
+	</dk:simpleType>
+
+	<!-- Restrict values using ENUM -->
+	<dk:simpleType name="ActionType">
+		<dk:restriction base="dk:string">
+			<dk:enumeration value="STEP" />
+			<dk:enumeration value="SKIP" />
+			<dk:enumeration value="EXACT" />
+		</dk:restriction>
+	</dk:simpleType>
+
+	<!-- Restrict values using ENUM -->
+	<dk:simpleType name="BitType">
+		<dk:restriction base="dk:string">
+			<dk:enumeration value="ANY" />
+			<dk:enumeration value="CAP_ALPHA" />
+			<dk:enumeration value="LOW_ALPHA" />
+			<dk:enumeration value="ALPHA" />
+			<dk:enumeration value="NUMERIC" />
+			<dk:enumeration value="FULL_STOP" />
+			<dk:enumeration value="COMMA" />
+			<dk:enumeration value="SPACE" />
+			<dk:enumeration value="OPEN_TAG" />
+			<dk:enumeration value="CLOSE_TAG_SLASH" />
+			<dk:enumeration value="CLOSE_TAG" />
+			<dk:enumeration value="BOLD" />
+			<dk:enumeration value="ITALIC" />
+			<dk:enumeration value="OPEN_BRACKET" />
+			<dk:enumeration value="CLOSE_BRACKET" />
+			<dk:enumeration value="OPEN_QUOTE" />
+			<dk:enumeration value="CLOSE_QUOTE" />
+			<dk:enumeration value="COLON" />
+			<dk:enumeration value="SEMI_COLON" />
+			<dk:enumeration value="LAST_CHAR" />
+			<dk:enumeration value="MULTI" />
+			<dk:enumeration value="EXACT" />
+		</dk:restriction>
+	</dk:simpleType>
+
+</dk:schema>    

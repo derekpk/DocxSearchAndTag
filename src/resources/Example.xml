@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:sequences xmlns:p="http://www.decoder.ie/namespaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.decoder.ie/namespaces SequenceMatch.xsd ">
+
+<!-- ***************************************************  AUTHOR  ***************************************************** -->
+	<p:sequence p:type="ONE" p:id="EXAMPLE_AUTHOR_1"	p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" by " />
+			</p:bit>
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+<!-- ***************************************************  TITLE  ***************************************************** -->
+ 
+	<p:sequence p:type="TWO" p:id="TITLE_1" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value=" is " />
+			</p:bit>
+			<p:bit p:type="MULTI" p:action="SKIP">
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="COLON" />
+				<p:multi p:type="SEMI_COLON" />
+			</p:bit>
+		</p:piece>
+	</p:sequence>
+	
+<!-- ***************************************************  REFERENCE  ***************************************************** -->
+
+	
+	<p:sequence p:type="THREE" p:id="REF_2" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
+			<p:bit p:type="NUMERIC" p:action="SKIP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="NUMERIC" p:action="STEP" />
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+	<p:sequence p:type="FOUR" p:id="REF_1" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+<!-- ***************************************************  PARAGRAPH  ***************************************************** -->
+
+	<p:sequence p:type="FIVE" p:id="ABS_NON_STANDARD_SENTENCE_START" p:action="START">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="MULTI" p:action="STEP">
+				<p:multi p:type="NUMERIC" />
+				<p:multi p:type="LOW_ALPHA" />
+				<p:multi p:type="COMMA" />
+				<p:multi p:type="FULL_STOP" />
+				<p:multi p:type="OPEN_QUOTE" />
+			</p:bit>
+			<p:bit p:type="LAST_CHAR" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+</p:sequences>
+
