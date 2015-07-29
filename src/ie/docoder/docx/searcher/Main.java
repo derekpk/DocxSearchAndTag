@@ -42,7 +42,7 @@ public class Main {
 	    	System.out.println("With this sequence file: " + xmlFilename);
 	    }
 
-	    BlobFinder finder = new BlobFinder(true);
+	    BlobFinder finder = new BlobFinder(false);
 		finder.ShowMessage("DOCX Searcher");
 	
 		finder.Search(docxFilename, xmlFilename, null);

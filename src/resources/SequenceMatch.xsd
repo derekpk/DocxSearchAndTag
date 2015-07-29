@@ -44,8 +44,8 @@
 	</dk:element>
 
 	<dk:attributeGroup name="sequenceAttributes">
-		<!-- <dk:attribute name="type" type="SequenceType" use="required" /> -->
-		<dk:attribute name="type" use="optional" default="FOUND">
+		<!-- <dk:attribute name="name" type="SequenceType" use="required" /> -->
+		<dk:attribute name="name" use="optional" default="FOUND">
 	        <dk:simpleType>
 	            <dk:restriction base="dk:string">
 	                <dk:pattern value="([A-Z])*"/>
@@ -58,7 +58,7 @@
 
  	<dk:simpleType name="SequenceActionType">
 		<dk:restriction base="dk:string">
-			<dk:enumeration value="START" />
+			<dk:enumeration value="SINGLE" />
 			<dk:enumeration value="CONTINUOUS" />
 		</dk:restriction>
 	</dk:simpleType>

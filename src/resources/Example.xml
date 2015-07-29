@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.decoder.ie/namespaces SequenceMatch.xsd ">
 
 <!-- ******************************************************************************************************** -->
-	<p:sequence p:type="ONE" p:id="FirstExample"	p:action="START">
+	<p:sequence p:name="ONE" p:id="FirstExample"	p:action="SINGLE">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="EXACT" p:action="EXACT">
 				<p:exact p:value=" by " />
@@ -20,7 +20,7 @@
 	</p:sequence>
 <!-- ******************************************************************************************************** -->
  
-	<p:sequence p:type="TWO" p:id="SecondExample" p:action="START">
+	<p:sequence p:name="TWO" p:id="SecondExample" p:action="SINGLE">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
 			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
@@ -40,7 +40,7 @@
 <!-- ***************************************************  REFERENCE  ***************************************************** -->
 
 	
-	<p:sequence p:type="THREE" p:id="ThirdExample" p:action="CONTINUOUS">
+	<p:sequence p:name="EXAMPLE" p:id="ThirdExample" p:action="CONTINUOUS">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
 			<p:bit p:type="NUMERIC" p:action="SKIP" />
@@ -53,7 +53,7 @@
 
 <!-- ***************************************************  PARAGRAPH  ***************************************************** -->
 
-	<p:sequence p:type="FOUR" p:id="FourthExample" p:action="START">
+	<p:sequence p:name="FOUR" p:id="FourthExample" p:action="SINGLE">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="MULTI" p:action="STEP">
 				<p:multi p:type="NUMERIC" />

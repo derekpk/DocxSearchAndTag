@@ -1,9 +1,6 @@
 package ie.docoder.docx.searcher;
 
-import java.util.Collections;
 import java.util.Map.Entry;
-import java.util.TreeMap;
-
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -178,7 +175,7 @@ public class BlobFinder {
 					int start = doc.paras.get(i).getBlobs().get(j).getStartIndex();
 					int end = doc.paras.get(i).getBlobs().get(j).getEndIndex();
 					
-					ShowMessage("\t\tBLOB title : " + title + ", cursor position start : " + start + ", end : " + end + "\n");
+					ShowMessage("\t\tBLOB name : " + title + ", cursor position start : " + start + ", end : " + end + "\n");
 					doc.paras.get(i).positionMap.put(start, "<" + title + ">");
 					doc.paras.get(i).positionMap.put(end, "</" + title + ">");
 				}
@@ -232,12 +229,12 @@ public class BlobFinder {
 		for(Sequences.Sequence seq: getSequences().getSequence()) {//Loop through sequences
 
 			if(type != null) {
-				if(seq.getType().equals(type)) {
+				if(seq.getName().equals(type)) {
 					ProcessPara(type, seq, paraIndex);
 				}
 			}
 			else {
-				ProcessPara(seq.getType(), seq, paraIndex);
+				ProcessPara(seq.getName(), seq, paraIndex);
 			}
 		}			
 	}
@@ -282,7 +279,7 @@ public class BlobFinder {
 	private void ProcessPara(final String type, final Sequences.Sequence seq, final int paraIndex) {
 		
 		SequenceActionType seqAction = seq.getAction();
-		if(seqAction == SequenceActionType.START) {
+		if(seqAction == SequenceActionType.SINGLE) {
 			Blob blob = new Blob();
 			blob = FindABlob(type, seq);
 			AddABlob(blob, paraIndex);
@@ -467,17 +464,17 @@ public class BlobFinder {
 	 * @param seq
 	 * @return
 	 */
-	private  Blob FindABlob(final String title, Sequences.Sequence seq) {
+	private  Blob FindABlob(final String name, Sequences.Sequence seq) {
 		Blob blob = new Blob();
 		
 		if(getCurrentCursor() < 0) {
 			return blob;
 		}
 		int localCursor = getCurrentCursor();
-		ShowMessage("SEQUENCE TYPE : " + seq.getAction() + ", ID : " + seq.getId() + " TYPE : " + seq.getType() + ", passed in title : " + title);
+		ShowMessage("SEQUENCE ACTION: " + seq.getAction() + ", ID : " + seq.getId() + " NAME : " + seq.getName() + ", passed in name : " + name);
 		int matchCount = 0;
 		try {
-			if(seq.getType().equals(title)) {
+			if(seq.getName().equals(name)) {
 				int bitCounter = 0;
 
 				for(Sequences.Sequence.Piece piece: seq.getPiece()) {//Loop through pieces
@@ -536,7 +533,7 @@ public class BlobFinder {
 		}
 		if(blob.getStartIndex() > -1 && blob.getEndIndex() <= haystack.length()) {
 			blob.setBlob(haystack.substring(blob.getStartIndex(), blob.getEndIndex()));
-			blob.setTitle(title.toString());
+			blob.setTitle(name.toString());
 			blob.setSequenceId(seq.getId());
 		}
 		return blob;
