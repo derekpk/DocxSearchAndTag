@@ -3,8 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.decoder.ie/namespaces SequenceMatch.xsd ">
 
-<!-- ***************************************************  AUTHOR  ***************************************************** -->
-	<p:sequence p:type="ONE" p:id="EXAMPLE_AUTHOR_1"	p:action="START">
+<!-- ******************************************************************************************************** -->
+	<p:sequence p:type="ONE" p:id="FirstExample"	p:action="START">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="EXACT" p:action="EXACT">
 				<p:exact p:value=" by " />
@@ -18,9 +18,9 @@
 			</p:bit>
 		</p:piece>
 	</p:sequence>
-<!-- ***************************************************  TITLE  ***************************************************** -->
+<!-- ******************************************************************************************************** -->
  
-	<p:sequence p:type="TWO" p:id="TITLE_1" p:action="START">
+	<p:sequence p:type="TWO" p:id="SecondExample" p:action="START">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="CAP_ALPHA" p:action="STEP" />
 			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
@@ -40,7 +40,7 @@
 <!-- ***************************************************  REFERENCE  ***************************************************** -->
 
 	
-	<p:sequence p:type="THREE" p:id="REF_2" p:action="CONTINUOUS">
+	<p:sequence p:type="THREE" p:id="ThirdExample" p:action="CONTINUOUS">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
 			<p:bit p:type="NUMERIC" p:action="SKIP" />
@@ -50,16 +50,10 @@
 			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
 		</p:piece>
 	</p:sequence>
-	<p:sequence p:type="FOUR" p:id="REF_1" p:action="CONTINUOUS">
-		<p:piece p:recurrence="SINGLE">
-			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
-			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
-		</p:piece>
-	</p:sequence>
 
 <!-- ***************************************************  PARAGRAPH  ***************************************************** -->
 
-	<p:sequence p:type="FIVE" p:id="ABS_NON_STANDARD_SENTENCE_START" p:action="START">
+	<p:sequence p:type="FOUR" p:id="FourthExample" p:action="START">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="MULTI" p:action="STEP">
 				<p:multi p:type="NUMERIC" />
