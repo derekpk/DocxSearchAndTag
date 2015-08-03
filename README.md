@@ -1,12 +1,11 @@
 # DocxSearchAndTag
-/**
- * 	Copyright 2015 Derek Keogh
- *	Licensed under the Apache License, Version 2.0 (the "License");
- *	you may not use this file except in compliance with the License.
- *	You may obtain a copy of the License at
- *	
- *	http://www.apache.org/licenses/LICENSE-2.0
- */
+
+Copyright 2015 Derek Keogh
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
 
 Version 0.5, this is still in development, but it's a good working version with plenty of improvements still to come.
 At this point I have not created the interface API yet, but this will be in place for V1.0.
