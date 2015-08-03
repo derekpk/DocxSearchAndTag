@@ -6,39 +6,39 @@
 //
 
 
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SequenceActionType.
+ * <p>Java class for RecurrenceType.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SequenceActionType">
+ * &lt;simpleType name="RecurrenceType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="SINGLE"/>
- *     &lt;enumeration value="CONTINUOUS"/>
+ *     &lt;enumeration value="MULTIPLE"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "SequenceActionType")
+@XmlType(name = "RecurrenceType")
 @XmlEnum
-public enum SequenceActionType {
+public enum RecurrenceType {
 
     SINGLE,
-    CONTINUOUS;
+    MULTIPLE;
 
     public String value() {
         return name();
     }
 
-    public static SequenceActionType fromValue(String v) {
+    public static RecurrenceType fromValue(String v) {
         return valueOf(v);
     }
 

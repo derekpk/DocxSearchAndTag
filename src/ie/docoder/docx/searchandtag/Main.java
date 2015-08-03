@@ -1,4 +1,4 @@
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;
 
 import java.io.File;
 
@@ -45,7 +45,7 @@ public class Main {
 	    BlobFinder finder = new BlobFinder(true);
 		finder.ShowMessage("DOCX Searcher");
 	
-		finder.Search("C:\\Users\\dell\\workspace\\DocxSearcher\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearcher\\src\\resources\\Example.xml", null);
+		finder.Search("C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.xml", null);
 		System.out.println("\n----------------------------- The document before -----------------------------\n");
 		finder.DisplayTheDocument();
 		System.out.println("\n----------------------------------- and after -----------------------------------\n");

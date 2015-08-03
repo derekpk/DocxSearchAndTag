@@ -6,7 +6,7 @@
  *	
  *	http://www.apache.org/licenses/LICENSE-2.0
  */
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;
 
 public class Blob {
 	private int startIndex;

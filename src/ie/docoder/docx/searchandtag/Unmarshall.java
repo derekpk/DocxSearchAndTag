@@ -6,7 +6,7 @@
  *	
  *	http://www.apache.org/licenses/LICENSE-2.0
  */
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.xml.bind.ValidationEventHandler;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import ie.docoder.docx.searcher.Sequences;
+import ie.docoder.docx.searchandtag.Sequences;
 
 import org.xml.sax.SAXException;
 

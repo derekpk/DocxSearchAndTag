@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.decoder.ie/namespaces", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;

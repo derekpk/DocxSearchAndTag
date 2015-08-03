@@ -6,7 +6,7 @@
  *	
  *	http://www.apache.org/licenses/LICENSE-2.0
  */
-package ie.docoder.docx.searcher;
+package ie.docoder.docx.searchandtag;
 
 import java.util.Collections;
 import java.util.TreeMap;
