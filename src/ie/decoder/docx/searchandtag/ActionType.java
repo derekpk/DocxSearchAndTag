@@ -6,7 +6,7 @@
 //
 
 
-package ie.docoder.docx.searchandtag;
+package ie.decoder.docx.searchandtag;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;

@@ -6,7 +6,7 @@
 //
 
 
-package ie.docoder.docx.searchandtag;
+package ie.decoder.docx.searchandtag;
 
 import java.util.ArrayList;
 import java.util.List;

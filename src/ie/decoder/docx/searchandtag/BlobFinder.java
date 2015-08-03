@@ -5,10 +5,17 @@
  *	You may obtain a copy of the License at
  *	
  *	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 
-package ie.docoder.docx.searchandtag;
+
+package ie.decoder.docx.searchandtag;
 
 import java.util.Map.Entry;
 
@@ -24,7 +31,7 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.docx4j.wml.Document;
 import org.docx4j.wml.P;
 
-import ie.docoder.docx.searchandtag.Sequences.Sequence.Piece.Bit;
+import ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit;
 
 public class BlobFinder {
 	
@@ -319,7 +326,7 @@ public class BlobFinder {
 		this.haystack = haystack;
 	}
 	
-	private  int skipToMultiChar(int cursor, ie.docoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  int skipToMultiChar(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
 		for(int i = cursor; i < haystack.length(); i++) {
 			
 			for(Sequences.Sequence.Piece.Bit.Multi part: bit.getMulti()) {
@@ -332,7 +339,7 @@ public class BlobFinder {
 		return -1;
 	}
 
-	private  int skipPastExact(int cursor, ie.docoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit, boolean skipPast) {
+	private  int skipPastExact(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit, boolean skipPast) {
 		int ret = haystack.indexOf(bit.getExact().getValue(), cursor);
 		if(ret > -1) {
 			if(skipPast)
@@ -344,7 +351,7 @@ public class BlobFinder {
 		return -1;
 	}
 	
-	private  boolean IsMultiCharMatch(int cursor, ie.docoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  boolean IsMultiCharMatch(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
 		
 		for(Sequences.Sequence.Piece.Bit.Multi part: bit.getMulti()) {
 			if(IsCharMatch(cursor, part.getType(), bit) == true) {
@@ -359,7 +366,7 @@ public class BlobFinder {
 	 * @param type
 	 * @return
 	 */
-	private  int SkipTo(int cursor, ie.docoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  int SkipTo(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
 		if(cursor < 0) {
 			return -1;
 		}
