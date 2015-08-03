@@ -12,9 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-
 package ie.decoder.docx.searchandtag;
 
 import java.util.Map.Entry;
@@ -195,8 +192,20 @@ public class BlobFinder {
 					int end = doc.paras.get(i).getBlobs().get(j).getEndIndex();
 					
 					ShowMessage("\t\tBLOB name : " + title + ", cursor position start : " + start + ", end : " + end + "\n");
-					doc.paras.get(i).positionMap.put(start, "<" + title + ">");
-					doc.paras.get(i).positionMap.put(end, "</" + title + ">");
+					if(doc.paras.get(i).positionMap.containsKey(start)) {
+						//ShowMessage("START already in the list");
+						String entry = doc.paras.get(i).positionMap.get(start);
+						doc.paras.get(i).positionMap.put(start, entry + "<" + title + ">");
+					} else {
+						doc.paras.get(i).positionMap.put(start, "<" + title + ">");
+					}
+					if(doc.paras.get(i).positionMap.containsKey(end)) {
+						//ShowMessage("END already in the list");
+						String entry = doc.paras.get(i).positionMap.get(end);
+						doc.paras.get(i).positionMap.put(start, "<" + title + ">" + entry);
+					} else {
+						doc.paras.get(i).positionMap.put(end, "</" + title + ">");
+					}
 				}
 				
 				for (Entry<Integer, String> entry : doc.paras.get(i).positionMap.entrySet()) {
@@ -209,39 +218,12 @@ public class BlobFinder {
 	}
 	
 	/**
-	 * This will compare the passed in blob with the other blobs in the para at paraIndex
-	 * @param blob
-	 * @return true if no matching blob is found, otherwise false 
-	 */
-	private boolean blobIsUnique(Blob blob, final int paraIndex) {
-		if(doc.paras.size() > 0) {
-				
-			for (int j = 0; j < doc.paras.get(paraIndex-1).getBlobs().size(); j++) {
-				
-				int curStart = doc.paras.get(paraIndex-1).getBlobs().get(j).getStartIndex();
-				int curEnd = doc.paras.get(paraIndex-1).getBlobs().get(j).getEndIndex();
-				String curTitle = doc.paras.get(paraIndex-1).getBlobs().get(j).getTitle();
-				String curBlob = doc.paras.get(paraIndex-1).getBlobs().get(j).getBlob();
-
-				int newStart = blob.getStartIndex();
-				int newEnd = blob.getEndIndex();
-				String newTitle = blob.getTitle();
-				String newBlob = blob.getBlob();
-				
-				if(newStart == curStart && newEnd == curEnd && newTitle.equals(curTitle) && newBlob.equals(curBlob)) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
-	/**
 	 * This starts the ball rolling, it will loop through the sequences.
 	 * If the passed in type is null, search all of the sequences else only search
-	 * for sequences that math the passed in type
+	 * for sequences that match the passed in type
 	 * 
 	 * @param type
+	 * @param paraIndex
 	 */
 	private void SequenceSearcher(final String type, final int paraIndex) {
 		
@@ -266,22 +248,19 @@ public class BlobFinder {
 		Para para = null;
 		
 		if(blob.isFound()) {
-			if(blobIsUnique(blob, paraIndex)) {
-				
-				if(doc.paras.size() > 0) {
-					if(doc.paras.get(paraIndex-1).getParaText().equals(getHaystack())) {
-						para = doc.paras.get(paraIndex-1);
-						doc.paras.get(paraIndex-1).getBlobs().add(blob);
-					} else {
-						para = new Para(getHaystack());
-						para.getBlobs().add(blob);
-						doc.paras.add(para);
-					}
+			if(doc.paras.size() > 0) {
+				if(doc.paras.get(paraIndex-1).getParaText().equals(getHaystack())) {
+					para = doc.paras.get(paraIndex-1);
+					doc.paras.get(paraIndex-1).getBlobs().add(blob);
 				} else {
 					para = new Para(getHaystack());
 					para.getBlobs().add(blob);
-					doc.paras.add(para);	
+					doc.paras.add(para);
 				}
+			} else {
+				para = new Para(getHaystack());
+				para.getBlobs().add(blob);
+				doc.paras.add(para);	
 			}
 		} else {
 			setCurrentCursor(0);
