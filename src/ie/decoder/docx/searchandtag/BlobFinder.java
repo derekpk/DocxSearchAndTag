@@ -202,7 +202,7 @@ public class BlobFinder {
 					if(doc.paras.get(i).positionMap.containsKey(end)) {
 						//ShowMessage("END already in the list");
 						String entry = doc.paras.get(i).positionMap.get(end);
-						doc.paras.get(i).positionMap.put(start, "<" + title + ">" + entry);
+						doc.paras.get(i).positionMap.put(end, "</" + title + ">" + entry);
 					} else {
 						doc.paras.get(i).positionMap.put(end, "</" + title + ">");
 					}

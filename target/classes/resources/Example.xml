@@ -62,6 +62,16 @@
 		</p:piece>
 	</p:sequence>
 
+	<p:sequence p:name="EXAMPLETWO" p:id="ExampleTwo" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
+			<p:bit p:type="EXACT" p:action="EXACT">
+				<p:exact p:value="hello" />
+			</p:bit>
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
 	<p:sequence p:name="EXAMPLETHRREE" p:id="ExampleThree" p:action="CONTINUOUS">
 		<p:piece p:recurrence="SINGLE">
 			<p:bit p:type="OPEN_BRACKET" p:action="SKIP" />
@@ -71,6 +81,13 @@
 			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
 			<p:bit p:type="LOW_ALPHA" p:action="STEP" />
 			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+		</p:piece>
+	</p:sequence>
+
+	<p:sequence p:name="EXAMPLEFOUR" p:id="ExampleFour" p:action="CONTINUOUS">
+		<p:piece p:recurrence="SINGLE">
+			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
+			<p:bit p:type="LOW_ALPHA" p:action="SKIP" />
 		</p:piece>
 	</p:sequence>
 
