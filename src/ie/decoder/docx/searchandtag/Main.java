@@ -37,29 +37,30 @@ public class Main {
 	    }
 	public static void main(String[] args) {
 
-//		JFileChooser chooser = new JFileChooser();
-//		
-//		FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft Docx files", "docx");
-//	    chooser.setFileFilter(filter);
-//	    int returnVal = chooser.showOpenDialog(chooser);
-//		String docxFilename = null;
-//	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-//	    	docxFilename = chooser.getSelectedFile().getPath();
-//	    	System.out.println("You chose to search this file: " + docxFilename);
-//	    }
-//		filter = new FileNameExtensionFilter("Sequence Definition files", "xml");
-//	    chooser.setFileFilter(filter);
-//	    returnVal = chooser.showOpenDialog(chooser);
-//		String xmlFilename = null;
-//	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-//	    	xmlFilename = chooser.getSelectedFile().getPath();
-//	    	System.out.println("With this sequence file: " + xmlFilename);
-//	    }
+		JFileChooser chooser = new JFileChooser();
+		
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Microsoft Docx files", "docx");
+	    chooser.setFileFilter(filter);
+	    int returnVal = chooser.showOpenDialog(chooser);
+		String docxFilename = null;
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	    	docxFilename = chooser.getSelectedFile().getPath();
+	    	System.out.println("You chose to search this file: " + docxFilename);
+	    }
+		filter = new FileNameExtensionFilter("Sequence Definition files", "xml");
+	    chooser.setFileFilter(filter);
+	    returnVal = chooser.showOpenDialog(chooser);
+		String xmlFilename = null;
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	    	xmlFilename = chooser.getSelectedFile().getPath();
+	    	System.out.println("With this sequence file: " + xmlFilename);
+	    }
 
 	    BlobFinder finder = new BlobFinder(true);
 		finder.ShowMessage("DOCX Searcher");
 	
-		finder.Search("C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.xml", null);
+		//finder.Search("C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.xml", null);
+		finder.Search(docxFilename, xmlFilename, null);
 		System.out.println("\n----------------------------- The document before -----------------------------\n");
 		finder.DisplayTheDocument();
 		System.out.println("\n----------------------------------- and after -----------------------------------\n");
