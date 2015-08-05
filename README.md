@@ -13,10 +13,10 @@ At this point I have not created the interface API yet, but this will be in plac
 This library allows a user to define a set of searches to be performed on docx files.
 
 The final object will contain the following
-1. The original text.
-2. The text with mark-up tags surrounding the found text.
-3. A data structure containing the name of each search and the positions of the first and last
- character what the match was found.
+* 1. The original text.
+* 2. The text with mark-up tags surrounding the found text.
+* 3. A data structure containing the name of each search and the positions of the first and last
+ character where the match was found.
 
 It works in a similar way to regex where by the search is defined in a particular syntax and then the search is performed.
 The user will define a set of searches in an xml file, new searches can be defined on the fly and then read in at run time,
