@@ -54,7 +54,7 @@ which contains one or several "p:piece" elements and in turn each "p:piece" is m
 "p:piece" has one attributes p:recurrence. (This is for implementation in v1.0)
 
 "p:bit" has two attributes p:type and p:action.
-  * p:type, can have one of multiple values from the following list; 	"ANY", "CAP_ALPHA", "LOW_ALPHA", "ALPHA",
+  * p:type, can have one of multiple values from the following list; 	"CAP_ALPHA", "LOW_ALPHA", "ALPHA",
 			"NUMERIC", "FULL_STOP",	"COMMA", "SPACE",	"OPEN_TAG", "CLOSE_TAG_SLASH", "CLOSE_TAG",	"BOLD",	"ITALIC",
 			"OPEN_BRACKET",	"CLOSE_BRACKET", "OPEN_QUOTE", "CLOSE_QUOTE",	"COLON", "SEMI_COLON", "LAST_CHAR",	"MULTI", "EXACT".
 			(This list will grow before v1.0)
