@@ -88,6 +88,7 @@
 	<dk:attributeGroup name="bitAttributes">
 		<dk:attribute name="type" type="BitType" use="required" />
 		<dk:attribute name="action" type="ActionType" use="required" />
+		<dk:attribute name="brake" type="BitType" use="optional" />
 	</dk:attributeGroup>
 
 
@@ -116,10 +117,9 @@
 		</dk:restriction>
 	</dk:simpleType>
 
-	<!-- Restrict values using ENUM -->
+	<!-- Restrict values using ENUM, this is also used for brakeType -->
 	<dk:simpleType name="BitType">
 		<dk:restriction base="dk:string">
-			<dk:enumeration value="ANY" />
 			<dk:enumeration value="CAP_ALPHA" />
 			<dk:enumeration value="LOW_ALPHA" />
 			<dk:enumeration value="ALPHA" />

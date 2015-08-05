@@ -404,8 +404,6 @@ public class BlobFinder {
 				return skipToMultiChar(cursor, bit);
 			//case EXACT:
 				//return skipPastExact(cursor, bit, false);
-			case ANY:
-				break;
 			default:
 				break;	
 		}
@@ -445,7 +443,6 @@ public class BlobFinder {
 			case COLON:				return curChar == BlobFinder.COLON ? true : false;
 			case SEMI_COLON:		return curChar == BlobFinder.SEMI_COLON ? true : false;
 			case LAST_CHAR:			return cursor == haystack.length() - 1 ? true : false;
-			case ANY:		 		return true;
 			case MULTI:				return IsMultiCharMatch(cursor, bit);
 			case EXACT:				return curChar == bit.getExact().getValue().charAt(bit.getExact().getValue().length() - 1);
 			default:
@@ -484,7 +481,10 @@ public class BlobFinder {
 							//System.out.println("Too long");
 							break;
 						}
-			
+						if(bit.getBrake() != null ) {
+							System.out.println("BRAKE VALUE : " + bit.getBrake().value() );	
+						}
+						
 						if(bit.getAction() == ActionType.EXACT) {
 							localCursor = skipPastExact(getCurrentCursor(), bit, true);	
 						}
