@@ -29,7 +29,7 @@ for processing, the xml that defines what each search looks like is determined b
 
 Dox4j is used to read the docx file and provide the file contents paragraph by paragraph.	
 
-Example of one search within a sequence file:
+Example of search within a sequence file:
 	
 	<p:sequence p:name="EXAMPLE" p:id="AnExample" p:action="CONTINUOUS">
 		<p:piece p:recurrence="SINGLE">
@@ -38,6 +38,9 @@ Example of one search within a sequence file:
 			<p:bit p:type="CLOSE_BRACKET" p:action="SKIP" />
 		</p:piece>
 	</p:sequence>
+	
+	<!-- This sequence will find for example "(a1234)" with output "<EXAMPLE>(a1234)</EXAMPLE>" -->
+	<!-- The data structure will contain the search name and the found start and end indexes. -->  
 
 The above search will scan each line of text contained within a given docx file, and try to recognise
 the sequence defined in the xml. The basic format to define a search has three parts "p:sequence"
