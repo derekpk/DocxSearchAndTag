@@ -15,6 +15,7 @@
 package ie.decoder.docx.searchandtag;
 
 import java.io.File;
+import java.net.URL;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -56,11 +57,12 @@ public class Main {
 	    	System.out.println("With this sequence file: " + xmlFilename);
 	    }
 
-	    BlobFinder finder = new BlobFinder(true);
+		BlobFinder finder = new BlobFinder(false);
 		finder.ShowMessage("DOCX Searcher");
 	
 		//finder.Search("C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.xml", null);
 		finder.Search(docxFilename, xmlFilename, null);
+		//finder.Search("/home/derek/git/DocxSearchAndTag/src/resources/Example.docx", "/home/derek/git/DocxSearchAndTag/src/resources/Example.xml", null);
 		System.out.println("\n----------------------------- The document before -----------------------------\n");
 		finder.DisplayTheDocument();
 		System.out.println("\n----------------------------------- and after -----------------------------------\n");

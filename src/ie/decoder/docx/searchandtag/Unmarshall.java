@@ -35,7 +35,8 @@ import org.xml.sax.SAXException;
 public class Unmarshall {
 
     /** Path to XML schema */
-    private final static String SCHEMA = "resources/SequenceMatch.xsd";
+    private final static String SCHEMA = "SequenceMatch.xsd";
+    //private final static String SCHEMA = "resources/SequenceMatch.xsd";
     private final static String EXAMPLE_XML = "resources/Example.xml";
     
     /** XML document used to define the searches */
@@ -49,17 +50,19 @@ public class Unmarshall {
         
     	Sequences sec = null;
         try {
-            File xmlFile = new File(FILE);
+        	File xmlFile = new File(FILE);
             if(!xmlFile.exists()) {
                 String errMsg = "Did not find xml : " + FILE + " at the specified location:";
                 throw new Exception(errMsg);
             }
 
-            Class cls = Class.forName("ie.decoder.docx.searchandtag.Main");
-            ClassLoader cLoader = cls.getClassLoader();
+            Class<?> cls = null;
+            ClassLoader cLoader = null;
 
             File xsdFile = null;
             try {
+            	cls = Class.forName("ie.decoder.docx.searchandtag.Main");
+                cLoader = cls.getClassLoader();
             	xsdFile = new File(cLoader.getResource(SCHEMA).getFile());
                 if(!xsdFile.exists()) {
                     String errMsg = "Did not find xsd : " + SCHEMA + " at the specified location:";

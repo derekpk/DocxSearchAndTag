@@ -483,7 +483,7 @@ public class BlobFinder {
 							break;
 						}
 						if(bit.getBrake() != null ) {
-							System.out.println("BRAKE VALUE : " + bit.getBrake().value() );	
+							//System.out.println("BRAKE VALUE : " + bit.getBrake().value() );	
 						}
 						
 						if(bit.getAction() == ActionType.EXACT) {
