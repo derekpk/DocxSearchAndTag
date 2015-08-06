@@ -28,7 +28,8 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.docx4j.wml.Document;
 import org.docx4j.wml.P;
 
-import ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit;
+import ie.decoder.docx.searchandtag.jaxb.*;
+import ie.decoder.docx.searchandtag.jaxb.Sequences.Sequence.Piece.Bit;
 
 public class BlobFinder {
 	
@@ -305,7 +306,7 @@ public class BlobFinder {
 		this.haystack = haystack;
 	}
 	
-	private  int skipToMultiChar(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  int skipToMultiChar(int cursor, ie.decoder.docx.searchandtag.jaxb.Sequences.Sequence.Piece.Bit bit) {
 		for(int i = cursor; i < haystack.length(); i++) {
 			
 			for(Sequences.Sequence.Piece.Bit.Multi part: bit.getMulti()) {
@@ -318,7 +319,7 @@ public class BlobFinder {
 		return -1;
 	}
 
-	private  int skipPastExact(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit, boolean skipPast) {
+	private  int skipPastExact(int cursor, ie.decoder.docx.searchandtag.jaxb.Sequences.Sequence.Piece.Bit bit, boolean skipPast) {
 		int ret = haystack.indexOf(bit.getExact().getValue(), cursor);
 		if(ret > -1) {
 			if(skipPast)
@@ -330,7 +331,7 @@ public class BlobFinder {
 		return -1;
 	}
 	
-	private  boolean IsMultiCharMatch(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  boolean IsMultiCharMatch(int cursor, ie.decoder.docx.searchandtag.jaxb.Sequences.Sequence.Piece.Bit bit) {
 		
 		for(Sequences.Sequence.Piece.Bit.Multi part: bit.getMulti()) {
 			if(IsCharMatch(cursor, part.getType(), bit) == true) {
@@ -345,7 +346,7 @@ public class BlobFinder {
 	 * @param type
 	 * @return
 	 */
-	private  int SkipTo(int cursor, ie.decoder.docx.searchandtag.Sequences.Sequence.Piece.Bit bit) {
+	private  int SkipTo(int cursor, ie.decoder.docx.searchandtag.jaxb.Sequences.Sequence.Piece.Bit bit) {
 		if(cursor < 0) {
 			return -1;
 		}
@@ -540,7 +541,7 @@ public class BlobFinder {
 	public void DisplayTheSequence() {
 		
 		try {
-			System.out.println("The sequence has " + sequences.getSequence().get(0).piece.size() + " piece's\n");
+			System.out.println("The sequence has " + sequences.getSequence().get(0).getPiece().size() + " piece's\n");
 
 			for(Sequences.Sequence seq: sequences.getSequence()) {
 				for(Sequences.Sequence.Piece piece: seq.getPiece()) {

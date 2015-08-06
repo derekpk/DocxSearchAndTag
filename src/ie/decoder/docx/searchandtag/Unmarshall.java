@@ -28,7 +28,7 @@ import javax.xml.bind.ValidationEventHandler;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import ie.decoder.docx.searchandtag.Sequences;
+import ie.decoder.docx.searchandtag.jaxb.Sequences;
 
 import org.xml.sax.SAXException;
 
@@ -55,11 +55,20 @@ public class Unmarshall {
                 throw new Exception(errMsg);
             }
 
-            ClassLoader classLoader = getClass().getClassLoader();
-            File xsdFile = new File(classLoader.getResource(SCHEMA).getFile());
-            if(!xsdFile.exists()) {
-                String errMsg = "Did not find xsd : " + SCHEMA + " at the specified location:";
-                throw new Exception(errMsg);
+            Class cls = Class.forName("ie.decoder.docx.searchandtag.Main");
+            ClassLoader cLoader = cls.getClassLoader();
+
+            File xsdFile = null;
+            try {
+            	xsdFile = new File(cLoader.getResource(SCHEMA).getFile());
+                if(!xsdFile.exists()) {
+                    String errMsg = "Did not find xsd : " + SCHEMA + " at the specified location:";
+                    throw new Exception(errMsg);
+                }
+            	
+            } catch (NullPointerException  ex) {
+                String errMsg = "class loader failed with NULLfor file : "  + SCHEMA + " class name " + cls.getName();
+                throw new Exception(errMsg);     
             }
 
             SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
