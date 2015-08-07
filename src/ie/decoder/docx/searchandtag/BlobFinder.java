@@ -139,11 +139,13 @@ public class BlobFinder {
 	}
 	/**
 	 * 
-	 * @param docxFile, file that will be searched
+	 * @param docxFile, file to be searched
 	 * @param xmlFile, file containing the searches 
-	 * @param type
+	 * @param type, this should be used to search with one sequence type,
+	 *  use the value in the sequence i.e. p:name="TWO", so a String "TWO", other wise null
+	 *  or use the other Search method
 	 */
-	void Search(final String docxFile, final String xmlFile, String type) {
+	void Search(final String docxFile, final String xmlFile, final String type) {
 		try {
 			
 			BlobSetup(docxFile, xmlFile);
