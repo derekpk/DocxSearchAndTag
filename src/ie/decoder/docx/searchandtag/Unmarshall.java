@@ -35,9 +35,7 @@ import org.xml.sax.SAXException;
 public class Unmarshall {
 
     /** Path to XML schema */
-    private final static String SCHEMA = "SequenceMatch.xsd";
-    //private final static String SCHEMA = "resources/SequenceMatch.xsd";
-    private final static String EXAMPLE_XML = "resources/Example.xml";
+    private final static String SCHEMA = "/SequenceMatch.xsd";
     
     /** XML document used to define the searches */
     private String FILE;
@@ -56,27 +54,24 @@ public class Unmarshall {
                 throw new Exception(errMsg);
             }
 
-            Class<?> cls = null;
-            ClassLoader cLoader = null;
-
-            File xsdFile = null;
+            URL xsdUrl = null;
             try {
-            	cls = Class.forName("ie.decoder.docx.searchandtag.Main");
-                cLoader = cls.getClassLoader();
-            	xsdFile = new File(cLoader.getResource(SCHEMA).getFile());
-                if(!xsdFile.exists()) {
-                    String errMsg = "Did not find xsd : " + SCHEMA + " at the specified location:";
-                    throw new Exception(errMsg);
-                }
+            	xsdUrl = getClass().getResource(SCHEMA);
             	
-            } catch (NullPointerException  ex) {
-                String errMsg = "class loader failed with NULLfor file : "  + SCHEMA + " class name " + cls.getName();
+            } catch (Exception  ex) {
+                String errMsg = "Getting the URL failed : "  + SCHEMA;
                 throw new Exception(errMsg);     
             }
 
             SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema;
-            schema = sf.newSchema(xsdFile);
+            Schema schema = null;
+            if(xsdUrl != null) {
+                schema = sf.newSchema(xsdUrl);
+            }
+            if(schema == null) {
+            	String errMsg = "SCHEMA is null";
+                throw new Exception(errMsg);
+            }
             
             JAXBContext jaxbContext = JAXBContext.newInstance(Sequences.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
