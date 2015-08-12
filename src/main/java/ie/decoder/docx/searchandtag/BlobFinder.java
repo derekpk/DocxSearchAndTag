@@ -14,6 +14,8 @@
  */
 package ie.decoder.docx.searchandtag;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map.Entry;
 
 import org.apache.log4j.ConsoleAppender;
@@ -75,7 +77,7 @@ public class BlobFinder {
 		SHOW_DEBUG = showDebug;
 	}
 	
-	void BlobSetup(final String docxFile, final String xmlFile) {
+	private void BlobSetup(final String docxFile, final String xmlFile) {
 		try {
 			setCurrentCursor(0);
 			docxFilename = docxFile;
@@ -99,7 +101,7 @@ public class BlobFinder {
 	 * Just a little helper
 	 * @param message
 	 */
-	public void ShowMessage(String message) {
+	private void ShowMessage(String message) {
 		if(SHOW_DEBUG) {
 			System.out.println(message);
 		}
@@ -108,7 +110,7 @@ public class BlobFinder {
 	/**
 	 * 
 	 */
-	void DisplayTheDocumentWithTags() {
+	public void DisplayTheDocumentWithTags() {
 		if(doc.paras.size() > 0) {
 			for (int i = 0; i < doc.paras.size(); i++) {
 				System.out.println(doc.paras.get(i).getParaTextWithTags());
@@ -121,7 +123,7 @@ public class BlobFinder {
 	 * is true and after search if the param is false.
 	 * @param before
 	 */
-	void DisplayTheDocument() {
+	public void DisplayTheDocument() {
 		if(doc.paras.size() > 0) {
 			for (int i = 0; i < doc.paras.size(); i++) {
 				System.out.println(doc.paras.get(i).getParaText());
@@ -134,7 +136,7 @@ public class BlobFinder {
 	 * @param docxFile, file that will be searched
 	 * @param xmlFile, file containing the searches 
 	 */
-	void Search(final String docxFile, final String xmlFile) {
+	public void Search(final String docxFile, final String xmlFile) {
 		Search(docxFile, xmlFile, null);
 	}
 	/**
@@ -145,7 +147,7 @@ public class BlobFinder {
 	 *  use the value in the sequence i.e. p:name="TWO", so a String "TWO", other wise null
 	 *  or use the other Search method
 	 */
-	void Search(final String docxFile, final String xmlFile, final String type) {
+	public void Search(final String docxFile, final String xmlFile, final String type) {
 		try {
 			
 			BlobSetup(docxFile, xmlFile);
@@ -300,11 +302,11 @@ public class BlobFinder {
 		}
 	}
 	
-	public String getHaystack() {
+	private String getHaystack() {
 		return haystack;
 	}
 
-	public void setHaystack(String haystack) {
+	private void setHaystack(String haystack) {
 		this.haystack = haystack;
 	}
 	
