@@ -69,11 +69,11 @@ public class BlobFinder {
 	    rootLogger.addAppender(new ConsoleAppender(new PatternLayout("%-6r [%p] %c - %m%n")));
 	}
 
-	BlobFinder() {
+	public BlobFinder() {
 		this(false);
 	}
 	
-	BlobFinder(boolean showDebug) {
+	public BlobFinder(boolean showDebug) {
 		SHOW_DEBUG = showDebug;
 	}
 	
@@ -136,8 +136,8 @@ public class BlobFinder {
 	 * @param docxFile, file that will be searched
 	 * @param xmlFile, file containing the searches 
 	 */
-	public void Search(final String docxFile, final String xmlFile) {
-		Search(docxFile, xmlFile, null);
+	public int Search(final String docxFile, final String xmlFile) {
+		return Search(docxFile, xmlFile, null);
 	}
 	/**
 	 * 
@@ -147,7 +147,8 @@ public class BlobFinder {
 	 *  use the value in the sequence i.e. p:name="TWO", so a String "TWO", other wise null
 	 *  or use the other Search method
 	 */
-	public void Search(final String docxFile, final String xmlFile, final String type) {
+	public int Search(final String docxFile, final String xmlFile, final String type) {
+		int foundCount = 0;
 		try {
 			
 			BlobSetup(docxFile, xmlFile);
@@ -172,19 +173,21 @@ public class BlobFinder {
 					}
 				}
 			}
-			ApplyTheTags();
+			foundCount = ApplyTheTags();
 			ShowMessage("\n\nDOCX Search Complete for FILE: " + docxFilename);
 		} catch (Docx4JException e) {
 			e.printStackTrace();
 		}
-		
+		return foundCount;
 	}
 	
 	/**
 	 * When the search is complete, go through the paras and add the tags
 	 */
-	private void ApplyTheTags() {
+	private int ApplyTheTags() {
+		int foundCount = 0;
 		if(doc.paras.size() > 0) {
+			
 			for (int i = 0; i < doc.paras.size(); i++) {
 				
 				StringBuilder paraBuilder = new StringBuilder(doc.paras.get(i).getParaText());
@@ -197,6 +200,7 @@ public class BlobFinder {
 					int end = doc.paras.get(i).getBlobs().get(j).getEndIndex();
 					
 					ShowMessage("\t\tBLOB name : " + title + ", cursor position start : " + start + ", end : " + end + "\n");
+					foundCount++;
 					if(doc.paras.get(i).positionMap.containsKey(start)) {
 						//ShowMessage("START already in the list");
 						String entry = doc.paras.get(i).positionMap.get(start);
@@ -219,7 +223,9 @@ public class BlobFinder {
 				}
 				doc.paras.get(i).setParaTextWithTags(paraBuilder.toString());
 			}
+			ShowMessage("FOUND : " + foundCount);
 		}
+		return foundCount;
 	}
 	
 	/**

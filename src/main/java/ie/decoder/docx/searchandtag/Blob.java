@@ -34,7 +34,7 @@ public class Blob {
 		setSequenceId(null);
 	}
 	
-	void reset() {
+	public void reset() {
 		init();
 	}
 

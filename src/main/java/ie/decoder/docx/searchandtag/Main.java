@@ -16,6 +16,8 @@ package ie.decoder.docx.searchandtag;
 
 import java.io.File;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -57,17 +59,16 @@ public class Main {
 	    	System.out.println("With this sequence file: " + xmlFilename);
 	    }
 
-		BlobFinder finder = new BlobFinder(false);
-		finder.ShowMessage("DOCX Searcher");
+		BlobFinder finder = new BlobFinder();
+		System.out.println("DOCX Searcher");
+
+		//System.out.println("THREE : " + new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSSSSS").format(new Date()));
 	
-		//finder.Search("C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.docx", "C:\\Users\\dell\\workspace\\DocxSearchAndTag\\src\\resources\\Example.xml", null);
 		finder.Search(docxFilename, xmlFilename, null);
-		//finder.Search("/home/derek/git/DocxSearchAndTag/src/resources/Example.docx", "/home/derek/git/DocxSearchAndTag/src/resources/Example.xml", null);
 		System.out.println("\n----------------------------- The document before -----------------------------\n");
 		finder.DisplayTheDocument();
 		System.out.println("\n----------------------------------- and after -----------------------------------\n");
 		finder.DisplayTheDocumentWithTags();
 		System.out.println("\n---------------------------------------- FIN.. -----------------------------------");
-		
 	}
 }

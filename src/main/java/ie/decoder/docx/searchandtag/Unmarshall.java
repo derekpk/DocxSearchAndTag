@@ -15,11 +15,7 @@
 package ie.decoder.docx.searchandtag;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.Enumeration;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -45,7 +41,6 @@ public class Unmarshall {
     }
     
     public Sequences UnmarshallTheDocument() throws Exception, NullPointerException, JAXBException, SAXException {
-        
     	Sequences sec = null;
         try {
         	File xmlFile = new File(FILE);
@@ -72,7 +67,7 @@ public class Unmarshall {
             	String errMsg = "SCHEMA is null";
                 throw new Exception(errMsg);
             }
-            
+        	
             JAXBContext jaxbContext = JAXBContext.newInstance(Sequences.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             unmarshaller.setSchema(schema);
